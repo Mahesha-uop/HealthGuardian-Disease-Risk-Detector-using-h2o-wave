@@ -1,5 +1,5 @@
 from h2o_wave import Q, ui, data
-from pages.front_page import front_pge,front_cards,back_home
+from pages.front_page import front_pge,front_cards,back_home,footer
 
 choices_gender = [
     ui.choice('1', 'Male'),
@@ -17,6 +17,7 @@ choice1 = [
 ]
 
 def cvd_plt(q: Q):
+    ''' Plot Effecting factors for CVD'''
     q.page['cvd_plot'] = ui.plot_card(
         box='3 2 6 4',
         title='Effect of factors for Cardiovascular Disease',
@@ -47,6 +48,7 @@ def cvd_plt(q: Q):
     )
 
 def cvd_pred(q: Q,predictor):
+    ''' Prediction page for CVD'''
     del q.page['example']
     del q.page['example1']
     del q.page['example2']
@@ -78,6 +80,7 @@ def cvd_pred(q: Q,predictor):
     ])
 
     front_pge(q)
+    footer(q)
     back_home(q)
     cvd_plt(q)
     del q.page['details'] 
@@ -95,12 +98,16 @@ def cvd_pred(q: Q,predictor):
     )
     
 def cvd_form(q: Q):
+    ''' Form page to grt input for CVD'''
     del q.page['Diabetes']
+    del q.page['CVD']
+    del q.page['Lung_Cancer']
     del q.page['example1']
     del q.page['example2']
     del q.page['example3']
     front_pge(q)
     del q.page['cvd_plot']
+    del q.page['footer']
     q.page['example'] = ui.form_card(box='1 3 4 7', items=[
         ui.textbox(name='textbox1', label='Input Age', value=q.args.input8),
         ui.dropdown(name='dropdown', label='Choose Gender', value='2', required=True, choices=choices_gender),

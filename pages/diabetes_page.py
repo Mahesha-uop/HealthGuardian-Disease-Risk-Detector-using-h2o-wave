@@ -1,5 +1,5 @@
 from h2o_wave import Q, ui, data
-from pages.front_page import front_pge,front_cards,back_home
+from pages.front_page import front_pge,front_cards,back_home,footer
 
 choices_gender = [
     ui.choice('A', 'Male'),
@@ -7,6 +7,7 @@ choices_gender = [
 ]
 
 def diabetes_plt(q: Q):
+    ''' Plot Effecting factors for Diabetes '''
     q.page['diabetes_plot'] = ui.plot_card(
         box='3 2 6 4',
         title='Effect of factors for Diabetes',
@@ -34,6 +35,7 @@ def diabetes_plt(q: Q):
     )
 
 def diabetes_pred(q: Q,predictor):
+    ''' Prediction page for diabetes'''
     del q.page['example']
     del q.page['example1']
     del q.page['example2']
@@ -41,6 +43,7 @@ def diabetes_pred(q: Q,predictor):
     del q.page['CVD']
     del q.page['Diabetes']
     del q.page['Lung_Cancer']
+    footer(q)
     #  Store the values entered in text boxes in a list
     input_values = [
         q.args.dropdown,  # Store the value of the dropdown directly
@@ -64,7 +67,7 @@ def diabetes_pred(q: Q,predictor):
 
     front_pge(q)
     back_home(q)
-    diabtetes_plt(q)
+    diabetes_plt(q)
     del q.page['details'] 
     q.page['details_pred'] = ui.form_card(box='1 6 8 2', items=[
         ui.text(content='If prediction is no. You have higher chance of not having Diabetes. Keep up your Good habits'),
@@ -80,12 +83,16 @@ def diabetes_pred(q: Q,predictor):
     )
 
 def diabetes_form(q: Q):
+    ''' Form page to grt input for diabetes'''
     del q.page['Diabetes']
+    del q.page['CVD']
+    del q.page['Lung_Cancer']
     del q.page['example1']
     del q.page['example2']
     del q.page['example3']
     front_pge(q)
     del q.page['diabetes_plot']
+    del q.page['footer']
     q.page['example'] = ui.form_card(box='1 3 4 7', items=[
             ui.dropdown(name='dropdown', label='Choose Gender', value='B', required=True, choices=choices_gender),
             ui.textbox(name='textbox1', label='Input Number of times Pregnencies', value=q.args.input1),

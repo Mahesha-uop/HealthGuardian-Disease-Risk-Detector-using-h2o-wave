@@ -1,6 +1,7 @@
 from h2o_wave import Q, ui
 
 def back_home(q: Q):
+    ''' Come to front page from anywhere '''
     q.page['Back'] = ui.form_card(box='1 2 2 1', items=[
     ui.button(
         name="back",
@@ -11,14 +12,16 @@ def back_home(q: Q):
     )
     
 def front_pge(q: Q):
+    ''' front page header '''
     # Welcome message
     q.page['header'] = ui.header_card(
         box='1 1 8 1',
         title='HealthGuardian: Disease Risk Detector',
-        subtitle='Precaution before Destrotion',
+        subtitle='Guarding Your Health, Predicting Your Future.',
     )
 
 def front_cards(q: Q):
+    ''' front page style '''
     del q.page['diabetes_plot']
     del q.page['Back']
     del q.page['details']
@@ -27,39 +30,40 @@ def front_cards(q: Q):
     del q.page['cvd_plot'] 
     # Cards for diseases
     q.page['Lung_Cancer'] = ui.tall_info_card(
-        box='1 3 2 4',
+        box='1 2 2 5',
         name='Lung_Cancer',
         title='Lung Cancer',
-        caption='You can assess your risks from your medical records and habits.',
+        caption='Lung cancer detection is crucial for early intervention and improved prognosis, leveraging advanced screening techniques and AI-driven analysis to identify subtle signs and symptoms.',
         category='Risk Prediction',
         image = 'https://www.shebaonline.org/wp-content/uploads/2022/05/lung-cancer.jpg',
     
     )
     
+    
     q.page['CVD'] = ui.tall_info_card(
-        box='3 3 2 4',
+        box='3 2 2 5',
         name='CVD',
         title='Cardiovascular Disease',
-        caption='You can assess your risks from your medical records and habits.',
+        caption='Cardiovascular disease (CVD) detection employs innovative diagnostics and risk profiling tools, empowering individuals to adopt preventive measures and lead heart-healthy lifestyles for long-term well-being.',
         category='Risk Prediction',
-        image='https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        image='https://i.ibb.co/370Dnb1/male-student-practicing-medicine.jpg',
     )
 
     q.page['Diabetes'] = ui.tall_info_card(
-        box='5 3 2 4',
+        box='5 2 2 5',
         name='Diabetes',
         title='Diabetes',
-        caption='You can assess your risks from your medical records and habits.',
+        caption='With diabetes on the rise globally, accurate risk assessment and proactive management are essential to mitigate complications, emphasizing lifestyle modifications and personalized treatment plans.',
         category='Risk Prediction',
-        image='https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        image='https://i.ibb.co/9ySHn5v/a5qp-qxmg-230817.jpg',
     
     )
-    q.page['example'] = ui.form_card(box='7 3 2 1', items=[
-        ui.text_l(content='Risk Assesment Form'),
-        ui.text(content='Click the disease type'),
+
+    q.page['example'] = ui.form_card(box='7 2 2 1', items=[
+        ui.text_l(content='Select a disese type'),
         ],
     )
-    q.page['example1'] = ui.form_card(box='7 4 2 1', items=[
+    q.page['example1'] = ui.form_card(box='7 3 2 1', items=[
         ui.button(
             name="lung_can",
             label="Lung Cancer",
@@ -68,7 +72,7 @@ def front_cards(q: Q):
         ],
     )
 
-    q.page['example2'] = ui.form_card(box='7 5 2 1', items=[
+    q.page['example2'] = ui.form_card(box='7 4 2 1', items=[
         ui.button(
             name="diabetes",
             label="Diabetes",
@@ -76,7 +80,7 @@ def front_cards(q: Q):
         ),
         ],
     )
-    q.page['example3'] = ui.form_card(box='7 6 2 1', items=[
+    q.page['example3'] = ui.form_card(box='7 5 2 1', items=[
         ui.button(
             name="cvd", 
             label="Cardiovascular Disease", 
@@ -85,4 +89,44 @@ def front_cards(q: Q):
         ],
         
     )
+    footer(q)
 
+
+def footer(q: Q):
+    ''' footer style '''
+    caption = """__Made with 💛 by Mahesha Viduranga__ <br /> using __[h2o Wave](https://wave.h2o.ai/docs/getting-started).__"""
+    q.page['footer'] = ui.footer_card(
+        box="1 8 8 2",
+        caption=caption,
+        items=[
+            ui.inline(
+                justify="end",
+                items=[
+                    ui.links(
+                        label="Contact Me",
+                        width="200px",
+                        items=[
+                            ui.link(
+                                name="github",
+                                label="GitHub",
+                                path="https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-using-h2o-wave",
+                                target="_blank",
+                            ),
+                            ui.link(
+                                name="linkedin",
+                                label="LinkedIn",
+                                path="https://www.linkedin.com/in/mahesha-viduranga-247b3a204",
+                                target="_blank",
+                            ),
+                            ui.link(
+                                name="portfolio",
+                                label="Portfolio",
+                                path="https://mahesha-uop.github.io/maheshaviduranga.github.io",
+                                target="_blank",
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    )

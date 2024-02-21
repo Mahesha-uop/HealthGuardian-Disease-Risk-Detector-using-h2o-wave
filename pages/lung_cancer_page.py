@@ -1,5 +1,5 @@
 from h2o_wave import Q, ui, data
-from pages.front_page import front_pge,front_cards,back_home
+from pages.front_page import front_pge,front_cards,back_home,footer
 
 choices_gender = [
     ui.choice('1', 'Male'),
@@ -20,6 +20,7 @@ choice_level = [
 ]
 
 def lc_plt(q: Q):
+    ''' Plot Effecting factors for Lung Cancer'''
     q.page['lc_plot'] = ui.plot_card(
         box='3 2 6 4',
         title='Effect of factors for Lung Cancer - Top 10', 
@@ -50,6 +51,7 @@ def lc_plt(q: Q):
     )
 
 def lc_pred(q: Q,predictor):
+    ''' Prediction page for Lung Cancer'''
     del q.page['example']
     del q.page['example1']
     del q.page['example2']
@@ -92,7 +94,7 @@ def lc_pred(q: Q,predictor):
         ui.text_l(content=f'Prediction: {prediction[2]}'), 
         ui.text_l(content=f'Prediction: {prediction[3]}') 
     ])
-
+    footer(q)
     front_pge(q)
     back_home(q)
     lc_plt(q)
@@ -111,12 +113,14 @@ def lc_pred(q: Q,predictor):
     ],
     )
 def lc_form(q: Q):
+    ''' Form page to grt input for Lung cancer'''
     del q.page['Diabetes']
     del q.page['example1']
     del q.page['example2']
     del q.page['example3']
     front_pge(q)
     del q.page['lc_plot']
+    del q.page['footer']
     
     q.page['example'] = ui.form_card(box='1 3 4 7', items=[
         ui.textbox(name='textbox', label='Input Age', value=q.args.input8),

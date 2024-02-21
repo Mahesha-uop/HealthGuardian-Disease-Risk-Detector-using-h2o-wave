@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/67860730/205605228-cf2eaa5e-e69b-4eae-
 ### 1. Clone the repository:
 
 ``` bash
-git clone https://github.com/ChathurindaRanasinghe/book-recommendation-system_using_h2o-wave.git
+git clone https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-using-h2o-wave.git
 ```
 
 ### 2. Create a virtual environment:
@@ -47,7 +47,7 @@ To deactivate the virtual environment use ```deactivate``` command.
 ```
 
 ### 6. View the app:
-Point your favorite web browser to http://localhost:10101/recommender
+Point your favorite web browser to http://localhost:10101/health_guardian
 
 ## Testing
 

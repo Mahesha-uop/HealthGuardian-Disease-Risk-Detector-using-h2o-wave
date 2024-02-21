@@ -5,6 +5,7 @@ h2o.init()
 
 # Define the Predict_Lung_Cancer class
 class Predict_Lung_Cancer:
+    
     def __init__(self):
         """
         Creates an instance for the Lung Cancer Prediction after loading the models.
