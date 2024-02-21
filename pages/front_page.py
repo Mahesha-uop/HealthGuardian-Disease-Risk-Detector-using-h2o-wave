@@ -1,5 +1,15 @@
 from h2o_wave import Q, ui
 
+def back_home(q: Q):
+    q.page['Back'] = ui.form_card(box='1 2 2 1', items=[
+    ui.button(
+        name="back",
+        label="Back to Home",
+        primary=True,
+    ),
+    ],
+    )
+    
 def front_pge(q: Q):
     # Welcome message
     q.page['header'] = ui.header_card(
@@ -9,17 +19,17 @@ def front_pge(q: Q):
     )
 
 def front_cards(q: Q):
+    del q.page['diabetes_plot']
+    del q.page['Back']
+    del q.page['details']
     # Cards for diseases
-    path = 'F:\Learn_python\Test_Interview\H2o_app\HealthGuardian-Disease-Risk-Detector-using-h2o-wave\plots\diabetes_variable_importance.png'
-    q.page['example'] = ui.form_card(box='1 2 2 4', items=[
-    ui.image(title='Image title', path=path),
-    ])
     q.page['Lung_Cancer'] = ui.tall_info_card(
-        box='1 5 2 4',
+        box='1 3 2 4',
         name='Lung_Cancer',
         title='Lung Cancer',
         caption='You can assess your risks from your medical records and habits.',
         category='Risk Prediction',
+        image = 'https://www.shebaonline.org/wp-content/uploads/2022/05/lung-cancer.jpg',
     
     )
     
@@ -73,12 +83,3 @@ def front_cards(q: Q):
         
     )
 
-def back_home(q: Q):
-    q.page['Back'] = ui.form_card(box='1 2 2 1', items=[
-    ui.button(
-        name="back",
-        label="Back to Home",
-        primary=True,
-    ),
-    ],
-)
