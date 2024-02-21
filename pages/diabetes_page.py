@@ -78,6 +78,7 @@ def diabetes_pred(q: Q,predictor):
             ),
     ],
     )
+    
 def diabetes_form(q: Q):
     del q.page['Diabetes']
     del q.page['example1']

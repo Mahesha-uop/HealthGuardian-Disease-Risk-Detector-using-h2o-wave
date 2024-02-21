@@ -14,8 +14,8 @@ class Predict_Lung_Cancer:
         self.imported_model = h2o.import_mojo(path)
 
     def predict(self, input_data):
-        column_names = ['Age','Gender','Air Pollution','Alcohol use','Dust Allergy','OccuPational Hazards','Genetic Risk','chronic Lung Disease','Balanced Diet	Obesity','Smoking','Passive','Smoker','Chest Pain','Coughing of Blood','Fatigue	Weight Loss','Shortness of Breath','Wheezing','Swallowing Difficulty','Clubbing of Finger Nails','Frequent Cold','Dry Cough','Snoring']
-        
+        column_names = ['Age','Gender','Air Pollution','Alcohol use','Dust Allergy','OccuPational Hazards','Genetic Risk','chronic Lung Disease','Balanced Diet','Obesity','Smoking','Passive Smoker','Chest Pain','Coughing of Blood','Fatigue','Weight Loss','Shortness of Breath','Wheezing','Swallowing Difficulty','Clubbing of Finger Nails','Frequent Cold','Dry Cough','Snoring']
+        input_data = [input_data]
         # Convert input data to H2OFrame
         self.input = h2o.H2OFrame(input_data, column_names=column_names)
 

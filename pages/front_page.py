@@ -23,6 +23,7 @@ def front_cards(q: Q):
     del q.page['Back']
     del q.page['details']
     del q.page['details_pred']
+    del q.page['lc_plot'] 
     # Cards for diseases
     q.page['Lung_Cancer'] = ui.tall_info_card(
         box='1 3 2 4',
