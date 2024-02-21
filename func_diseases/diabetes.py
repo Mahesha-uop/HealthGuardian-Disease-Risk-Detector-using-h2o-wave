@@ -15,7 +15,7 @@ class Predict_Diabetes:
 
     def predict(self, input_data):
         column_names = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-        
+        input_data = [input_data]
         # Convert input data to H2OFrame
         self.input = h2o.H2OFrame(input_data, column_names=column_names)
 

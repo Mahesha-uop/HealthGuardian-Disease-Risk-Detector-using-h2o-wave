@@ -8,7 +8,7 @@ choices_gender = [
 
 def diabtetes_plt(q: Q):
     q.page['diabetes_plot'] = ui.plot_card(
-        box='3 1 6 4',
+        box='3 2 6 4',
         title='Effect of factors for Diabetes',
         data=data('variable importance',8 , rows = [
             ('Pregnancies', 0.030), 
@@ -43,26 +43,30 @@ def diabetes_pred(q: Q,predictor):
     del q.page['Lung_Cancer']
     #  Store the values entered in text boxes in a list
     input_values = [
-        q.args.dropdown,
-        0 if q.args.textbox1 != '' and q.args.dropdown == 'Male' else 1,
-        85 if q.args.textbox2 != '' and q.args.dropdown == 'Male' else 85,
-        70 if q.args.textbox3 != '' and q.args.dropdown == 'Male' else 68,
-        19 if q.args.textbox4 != '' and q.args.dropdown == 'Male' else 24,
-        0 if q.args.textbox5 != '' and q.args.dropdown == 'Male' else 0,
-        21 if q.args.textbox6 != '' and q.args.dropdown == 'Male' else 18,
-        0 if q.args.textbox7 != '' and q.args.dropdown == 'Male' else 0,
-        25 if q.args.textbox8 != '' and q.args.dropdown == 'Male' else 23
+        q.args.dropdown,  # Store the value of the dropdown directly
+        q.args.textbox1 if q.args.textbox1 != '' else 0,    
+        q.args.textbox2 if q.args.textbox2 != '' else 85,  
+        q.args.textbox3 if q.args.textbox3 != '' else 70,
+        q.args.textbox4 if q.args.textbox4 != '' else 20,
+        q.args.textbox5 if q.args.textbox5 != '' else 0,
+        q.args.textbox6 if q.args.textbox6 != '' else 19,
+        q.args.textbox7 if q.args.textbox7 != '' else 0,
+        q.args.textbox8 if q.args.textbox8 != '' else 25
     ]
+
     print(input_values[1:])
     # Get prediction using the predictor object
-    prediction = predictor.predict(input_values[1:])#  Store the values entered in text boxes in a list
+    prediction = predictor.predict(input_values[1:])
+    prediction =prediction[0]
     q.page['example2'] = ui.form_card(box='1 3 2 2', items=[
-        ui.text_l(content=f'Prediction: {prediction[0][0][0]}')  # Display prediction
+        ui.text_l(content=f'Prediction: {prediction}')  # Display prediction
     ])
+
     front_pge(q)
     back_home(q)
-    diabtetes_plt(q) 
-    q.page['details_pred'] = ui.form_card(box='1 6 4 6', items=[
+    diabtetes_plt(q)
+    del q.page['details'] 
+    q.page['details_pred'] = ui.form_card(box='1 6 8 2', items=[
         ui.text(content='If prediction is no. You have higher chance of not having Diabetes. Keep up your Good habits'),
         ui.text(content='If prediction is yes. Dont panic. We advice you to  meet the family doctor.'),
         ui.text(content='Look at the plot and identify which area you have to improve for better health. Refer WHO standards'),
@@ -83,7 +87,7 @@ def diabetes_form(q: Q):
     del q.page['diabetes_plot']
     q.page['example'] = ui.form_card(box='1 3 4 7', items=[
             ui.dropdown(name='dropdown', label='Choose Gender', value='B', required=True, choices=choices_gender),
-            ui.textbox(name='textbox1', label='Input Number of times Pregnencies (if a male put zero)', value=q.args.input1),
+            ui.textbox(name='textbox1', label='Input Number of times Pregnencies', value=q.args.input1),
             ui.textbox(name='textbox2', label='Input Glocose Level', value=q.args.input2),
             ui.textbox(name='textbox3', label='Input Blood Pressure', value=q.args.input3),
             ui.textbox(name='textbox4', label='Input Skin Thickness', value=q.args.input4),
@@ -93,7 +97,7 @@ def diabetes_form(q: Q):
             ui.textbox(name='textbox8', label='Input Age', value=q.args.input8),
             ui.button(name='show_input_diabetes', label='Submit', primary=True),
         ])
-    q.page['details'] = ui.form_card(box='5 3 4 7', items=[
+    q.page['details'] = ui.form_card(box='5 3 4 5', items=[
         ui.text_l(content='About the Form'),
         ui.text(content='Please fill the form considering below informations. If any field is unknown please kept blank. We will assume that you are healthy in that unknown factor and values will be assigned automatically according to the world health standards. Try to insert more fields for better prediction'),
         ui.text(content= 'Pregnancies: Number of times pregnant'),
@@ -103,7 +107,7 @@ def diabetes_form(q: Q):
         ui.text(content='BMI: Body mass index (weight in kg/(height in m)^2)'),
         ui.text(content='DiabetesPedigreeFunction: Diabetes pedigree function'),
         ui.text(content='Age: Age (years)'),
-        ui.text(content= 'Technology: We have used H2O AutoML algorithms and predictions are based on best performed one'),
+        ui.text(content= 'Technology: We have used H2O AutoML algorithms and predictions are based on best performed one.'),
     ])
     back_home(q)
 
