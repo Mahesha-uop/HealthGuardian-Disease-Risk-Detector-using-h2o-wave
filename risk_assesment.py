@@ -1,5 +1,8 @@
 from h2o_wave import Q, app, ui, main
-import h2o
+from func_diseases.diabetes import predictor_diabetes
+# from func_diseases.cvd import predictor_cvd
+# from func_diseases.lung_cancer import predictor_lung_cancer
+from pages.diabetes_page import diabetes_pred,diabetes_form
 
 choices_pick = [
     ui.choice('A', 'Lung Cancer'),
@@ -7,83 +10,17 @@ choices_pick = [
     ui.choice('C', 'Diabetes'),
 ]
 
-# Initialize h2o
-h2o.init()
-
-# Define the Predict_Diabetes class
-class Predict_Diabetes:
-    def __init__(self):
-        """
-        Creates an instance of the recommender system after loading the data.
-        """
-        # Load the model
-        path = r'models\Diabetes.zip'
-        self.imported_model = h2o.import_mojo(path)
-
-    def predict(self, input_data):
-        column_names = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
-        
-        # Convert input data to H2OFrame
-        self.input = h2o.H2OFrame(input_data, column_names=column_names)
-
-        # Make predictions
-        predictions = self.imported_model.predict(self.input)
-
-        return predictions
-
-
-# Create an instance of Predict_Diabetes
-predictor = Predict_Diabetes()
-
 
 # Main page
 @app('/health_guardian')
 async def serve(q: Q):
     if q.args.show_input:
-            del q.page['example']
-            del q.page['example1']
-            del q.page['example2']
-            del q.page['example3']
-            del q.page['header']
-            del q.page['CVD']
-            del q.page['Diabetes']
-            del q.page['Lung_Cancer']
-            #  Store the values entered in text boxes in a list
-            input_values = [
-                q.args.textbox1 if q.args.textbox1 != '' else 0,
-                q.args.textbox2 if q.args.textbox2 != '' else 0,
-                q.args.textbox3 if q.args.textbox3 != '' else 0,
-                q.args.textbox4 if q.args.textbox4 != '' else 0,
-                q.args.textbox5 if q.args.textbox5 != '' else 0,
-                q.args.textbox6 if q.args.textbox6 != '' else 0,
-                q.args.textbox7 if q.args.textbox7 != '' else 0,
-                q.args.textbox8 if q.args.textbox8 != '' else 0
-            ]
-            print(input_values)
-            # Get prediction using the predictor object
-            prediction = predictor.predict(input_values)#  Store the values entered in text boxes in a list
-            q.page['example2'] = ui.form_card(box='1 3 4 7', items=[
-                ui.text(f'textbox1={q.args.textbox}'),
-                ui.text_l(content=f'Prediction: {prediction}')  # Display prediction
-            ])
-            
+            diabetes_pred(q,predictor_diabetes)
             
     else:
         if q.args.diabetes:
+            diabetes_form(q)
 
-                    del q.page['Diabetes']
-                    q.page['example'] = ui.form_card(box='1 3 4 7', items=[
-                            # ui.dropdown(name='dropdown', label='Pick one', value='B', required=True, choices=choices),
-                            ui.textbox(name='textbox1', label='Input Number of times Pregnencies (if a male put zero)', value=q.args.input1),
-                            ui.textbox(name='textbox2', label='Input Glocose Level', value=q.args.input2),
-                            ui.textbox(name='textbox3', label='Input Blood Pressure', value=q.args.input3),
-                            ui.textbox(name='textbox4', label='Input Skin Thickness', value=q.args.input4),
-                            ui.textbox(name='textbox5', label='Input Insulin', value=q.args.input5),
-                            ui.textbox(name='textbox6', label='Input BMI', value=q.args.input6),
-                            ui.textbox(name='textbox7', label='Input Diabetes Pedigree Function Value', value=q.args.input7),
-                            ui.textbox(name='textbox8', label='Input Age', value=q.args.input8),
-                            ui.button(name='show_input', label='Submit', primary=True),
-                        ])
         else: 
             # Welcome message
             q.page['header'] = ui.header_card(
@@ -148,8 +85,7 @@ async def serve(q: Q):
                     label="Cardiovascular Disease", 
                     primary=False,
                 ),
-            
-                ],
+                
             )
 
     await q.page.save()
