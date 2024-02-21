@@ -3,7 +3,7 @@ This app is developed using h2o wave and helps to identify the risk associated f
 
 ## Preview
 
-https://user-images.githubusercontent.com/67860730/205605228-cf2eaa5e-e69b-4eae-98aa-c913e3d28c42.mp4
+https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-using-h2o-wave/tree/24847bf8fb9266e0dbfb75af32656a608daa1868/introductory_video
 
 ## Getting Started
 
