@@ -1,7 +1,20 @@
 # HealthGuardian-Disease-Risk-Detector-using-h2o-wave
 This app is developed using h2o wave and helps to identify the risk associated for a certain individual in three main diseases.
 
-## Preview
+1. Diabetes
+2. Cardiovascular Disease
+3. Lung Cancer
+
+## Datasets
+1. Diabetes - https://www.kaggle.com/datasets/mathchi/diabetes-data-set
+2. Cardiovascular Disease - https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset
+3. Lung Cancer - https://www.kaggle.com/datasets/thedevastator/cancer-patients-and-air-pollution-a-new-link
+
+## Train
+
+Used H20 AutoML and all the scripts are in train folder.
+
+## Preview video link
 
 https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-using-h2o-wave/tree/24847bf8fb9266e0dbfb75af32656a608daa1868/introductory_video
 
