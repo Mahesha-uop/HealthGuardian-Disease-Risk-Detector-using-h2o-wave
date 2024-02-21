@@ -15,7 +15,7 @@ class Predict_CVD:
 
     def predict(self, input_data):
         column_names = ['age','gender','height','weight','ap_hi','ap_lo','cholesterol','gluc','smoke','alco','active']
-        
+        input_data = [input_data]
         # Convert input data to H2OFrame
         self.input = h2o.H2OFrame(input_data, column_names=column_names)
 

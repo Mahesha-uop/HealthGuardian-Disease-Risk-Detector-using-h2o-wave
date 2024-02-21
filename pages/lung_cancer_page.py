@@ -98,8 +98,9 @@ def lc_pred(q: Q,predictor):
     lc_plt(q)
     del q.page['details'] 
     q.page['details_pred'] = ui.form_card(box='1 6 8 2', items=[
-        ui.text(content='If prediction is no. You have higher chance of not having Lung Cancer. Keep up your Good habits'),
-        ui.text(content='If prediction is yes. Dont panic. We advice you to  meet the family doctor.'),
+        ui.text(content='If higher probability in prediction is Low. You have higher chance of not having Lung Cancer. Keep up your Good habits'),
+        ui.text(content='If higher probability in prediction is Medium. Control your day-today habits'),
+        ui.text(content='If higher probability in prediction is High. Dont panic. We advice you to  meet the family doctor.'),
         ui.text(content='Look at the plot and identify which area you have to improve for better health. Refer WHO standards'),
         ui.link(
                 name="who_btn",

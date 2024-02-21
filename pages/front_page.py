@@ -24,6 +24,7 @@ def front_cards(q: Q):
     del q.page['details']
     del q.page['details_pred']
     del q.page['lc_plot'] 
+    del q.page['cvd_plot'] 
     # Cards for diseases
     q.page['Lung_Cancer'] = ui.tall_info_card(
         box='1 3 2 4',
@@ -77,7 +78,7 @@ def front_cards(q: Q):
     )
     q.page['example3'] = ui.form_card(box='7 6 2 1', items=[
         ui.button(
-            name="CVD", 
+            name="cvd", 
             label="Cardiovascular Disease", 
             primary=False,
         ),

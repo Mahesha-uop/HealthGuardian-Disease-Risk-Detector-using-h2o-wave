@@ -6,7 +6,7 @@ choices_gender = [
     ui.choice('B', 'Female'),
 ]
 
-def diabtetes_plt(q: Q):
+def diabetes_plt(q: Q):
     q.page['diabetes_plot'] = ui.plot_card(
         box='3 2 6 4',
         title='Effect of factors for Diabetes',
@@ -78,7 +78,7 @@ def diabetes_pred(q: Q,predictor):
             ),
     ],
     )
-    
+
 def diabetes_form(q: Q):
     del q.page['Diabetes']
     del q.page['example1']
