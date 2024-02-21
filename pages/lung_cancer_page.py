@@ -57,8 +57,7 @@ def lc_pred(q: Q,predictor):
     del q.page['example2']
     del q.page['example3']
     del q.page['CVD']
-    del q.page['Diabetes']
-    del q.page['Lung_Cancer']
+
     #  Store the values entered in text boxes in a list
     input_values = [
         q.args.textbox if q.args.textbox != '' else 25,  # Store the value of the dropdown directly
@@ -115,6 +114,8 @@ def lc_pred(q: Q,predictor):
 def lc_form(q: Q):
     ''' Form page to grt input for Lung cancer'''
     del q.page['Diabetes']
+    del q.page['CVD']
+    del q.page['Lung_Cancer']
     del q.page['example1']
     del q.page['example2']
     del q.page['example3']

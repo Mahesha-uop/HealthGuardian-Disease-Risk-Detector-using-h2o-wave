@@ -21,37 +21,34 @@ git clone https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-us
 ### 2. Create a virtual environment:
 
 ``` bash
-python3 -m venv venv
+conda create -n yourenvname python=x.x anaconda
 ```
 
 ### 3. Activate the virtual environment:
 ``` bash
-source venv/bin/activate
+source activate yourenvname
 ```
 
 **windows**
 ``` bash
-venv\Scripts\activate.bat
+conda activate yourenvname
 ```
 To deactivate the virtual environment use ```deactivate``` command.
 
 ### 4. Install dependencies:
 
 ``` bash
-(venv) pip3 install -r requirements.txt 
+(yourenvname) pip3 install -r requirements.txt 
 ```
 
 ### 5. Run the app:
 ``` bash
-(venv) wave run app
+(yourenvname) wave run main.py
 ```
 
 ### 6. View the app:
 Point your favorite web browser to http://localhost:10101/health_guardian
 
-## Testing
-
-Tests are located in ```/tests```. See instructions on [h2o wave docs](https://wave.h2o.ai/docs/browser-testing) to configure tests.
 
 ## Others
 
