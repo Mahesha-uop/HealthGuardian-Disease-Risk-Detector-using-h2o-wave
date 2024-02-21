@@ -11,6 +11,7 @@ https://github.com/Mahesha-uop/HealthGuardian-Disease-Risk-Detector-using-h2o-wa
 
 1. Python 3.10+
 2. pip3
+3. conda
 
 ### 1. Clone the repository:
 
