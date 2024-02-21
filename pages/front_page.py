@@ -15,7 +15,7 @@ def front_pge(q: Q):
     ''' front page header '''
     # Welcome message
     q.page['header'] = ui.header_card(
-        box='1 1 8 1',
+        box='1 1 10 1',
         title='HealthGuardian: Disease Risk Detector',
         subtitle='Guarding Your Health, Predicting Your Future.',
     )
@@ -59,11 +59,12 @@ def front_cards(q: Q):
     
     )
 
-    q.page['example'] = ui.form_card(box='7 2 2 1', items=[
-        ui.text_l(content='Select a disese type'),
+    q.page['example'] = ui.form_card(box='7 2 4 1', items=[
+        ui.text_l(content='Select a disese type to continue(It is better to have with with your medical reports)'),
         ],
     )
-    q.page['example1'] = ui.form_card(box='7 3 2 1', items=[
+    q.page['example1'] = ui.form_card(box='7 3 2 2', items=[
+        ui.text_l(content='Click button to predict Lung Cancer'),
         ui.button(
             name="lung_can",
             label="Lung Cancer",
@@ -72,7 +73,8 @@ def front_cards(q: Q):
         ],
     )
 
-    q.page['example2'] = ui.form_card(box='7 4 2 1', items=[
+    q.page['example2'] = ui.form_card(box='9 3 2 2', items=[
+        ui.text_l(content='Click button to predict Diabetes'),
         ui.button(
             name="diabetes",
             label="Diabetes",
@@ -80,7 +82,8 @@ def front_cards(q: Q):
         ),
         ],
     )
-    q.page['example3'] = ui.form_card(box='7 5 2 1', items=[
+    q.page['example3'] = ui.form_card(box='8 5 2 2', items=[
+        ui.text_l(content='Click button to predict CVD'),
         ui.button(
             name="cvd", 
             label="Cardiovascular Disease", 
@@ -96,7 +99,7 @@ def footer(q: Q):
     ''' footer style '''
     caption = """__Made with 💛 by Mahesha Viduranga__ <br /> using __[h2o Wave](https://wave.h2o.ai/docs/getting-started).__"""
     q.page['footer'] = ui.footer_card(
-        box="1 8 8 2",
+        box="1 8 10 2",
         caption=caption,
         items=[
             ui.inline(

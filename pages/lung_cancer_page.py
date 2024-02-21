@@ -22,7 +22,7 @@ choice_level = [
 def lc_plt(q: Q):
     ''' Plot Effecting factors for Lung Cancer'''
     q.page['lc_plot'] = ui.plot_card(
-        box='3 2 6 4',
+        box='4 2 6 4',
         title='Effect of factors for Lung Cancer - Top 10', 
         data=data('variable importance',10 , rows = [
             ('Passive Smoker' ,0.155), 
@@ -88,7 +88,7 @@ def lc_pred(q: Q,predictor):
     print(input_values)
     # Get prediction using the predictor object
     prediction = predictor.predict(input_values)
-    q.page['example2'] = ui.form_card(box='1 3 2 2', items=[
+    q.page['example2'] = ui.form_card(box='2 3 2 2', items=[
         ui.text_l(content=f'Prediction: {prediction[1]}'),  # Display prediction
         ui.text_l(content=f'Prediction: {prediction[2]}'), 
         ui.text_l(content=f'Prediction: {prediction[3]}') 
@@ -98,7 +98,7 @@ def lc_pred(q: Q,predictor):
     back_home(q)
     lc_plt(q)
     del q.page['details'] 
-    q.page['details_pred'] = ui.form_card(box='1 6 8 2', items=[
+    q.page['details_pred'] = ui.form_card(box='2 6 8 2', items=[
         ui.text(content='If higher probability in prediction is Low. You have higher chance of not having Lung Cancer. Keep up your Good habits'),
         ui.text(content='If higher probability in prediction is Medium. Control your day-today habits'),
         ui.text(content='If higher probability in prediction is High. Dont panic. We advice you to  meet the family doctor.'),
@@ -123,7 +123,7 @@ def lc_form(q: Q):
     del q.page['lc_plot']
     del q.page['footer']
     
-    q.page['example'] = ui.form_card(box='1 3 4 7', items=[
+    q.page['example'] = ui.form_card(box='1 3 5 7', items=[
         ui.textbox(name='textbox', label='Input Age', value=q.args.input8),
         ui.dropdown(name='dropdown2', label='Choose Gender', value='2', required=True, choices=choices_gender),
         ui.dropdown(name='dropdown3', label='Air Pollution', value='2', required=True, choices=choice_level),
@@ -149,7 +149,7 @@ def lc_form(q: Q):
         ui.dropdown(name='dropdown23', label='Snoring', value='1', required=True, choices=choice_level),
         ui.button(name='show_input_lc', label='Submit', primary=True),
     ])
-    q.page['details'] = ui.form_card(box='5 3 4 5', items=[
+    q.page['details'] = ui.form_card(box='6 3 5 7', items=[
         ui.text_l(content='About the Form'),
         ui.text(content='Please fill the form considering below informations. If any field is unknown default value is level 2. We will assume that you are healthy in that unknown factors. Try to insert more fields for better prediction'),
         ui.text(content= 'Age: The age of the patient. (Numeric)'),

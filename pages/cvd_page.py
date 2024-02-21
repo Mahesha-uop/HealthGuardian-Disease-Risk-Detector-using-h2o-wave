@@ -19,7 +19,7 @@ choice1 = [
 def cvd_plt(q: Q):
     ''' Plot Effecting factors for CVD'''
     q.page['cvd_plot'] = ui.plot_card(
-        box='3 2 6 4',
+        box='4 2 6 4',
         title='Effect of factors for Cardiovascular Disease',
         data=data('variable importance',11 , rows = [
             ('Age', 0.142), 
@@ -75,7 +75,7 @@ def cvd_pred(q: Q,predictor):
     # Get prediction using the predictor object
     prediction = predictor.predict(input_values)
     prediction =prediction[0]
-    q.page['example2'] = ui.form_card(box='1 3 2 2', items=[
+    q.page['example2'] = ui.form_card(box='2 3 2 2', items=[
         ui.text_l(content=f'Prediction: {prediction}')  # Display prediction
     ])
 
@@ -108,7 +108,7 @@ def cvd_form(q: Q):
     front_pge(q)
     del q.page['cvd_plot']
     del q.page['footer']
-    q.page['example'] = ui.form_card(box='1 3 4 7', items=[
+    q.page['example'] = ui.form_card(box='1 3 5 7', items=[
         ui.textbox(name='textbox1', label='Input Age', value=q.args.input8),
         ui.dropdown(name='dropdown', label='Choose Gender', value='2', required=True, choices=choices_gender),
         ui.textbox(name='textbox2', label='Input Height', value=q.args.input1),
@@ -122,7 +122,7 @@ def cvd_form(q: Q):
         ui.dropdown(name='dropdown5', label='Are you a Active person', value='1', required=True, choices=choice),
         ui.button(name='show_input_cvd', label='Submit', primary=True),
         ])
-    q.page['details'] = ui.form_card(box='5 3 4 5', items=[
+    q.page['details'] = ui.form_card(box='6 3 5 7', items=[
         ui.text_l(content='About the Form'),
         ui.text(content='Please fill the form considering below informations. If any field is unknown please kept default. We will assume that you are healthy in that unknown factor and values will be assigned automatically according to the world health standards. Try to insert more fields for better prediction'),
         ui.text(content= 'Age | Objective Feature | age | int (days)'),

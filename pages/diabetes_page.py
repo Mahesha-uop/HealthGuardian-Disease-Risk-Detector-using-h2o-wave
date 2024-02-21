@@ -9,7 +9,7 @@ choices_gender = [
 def diabetes_plt(q: Q):
     ''' Plot Effecting factors for Diabetes '''
     q.page['diabetes_plot'] = ui.plot_card(
-        box='3 2 6 4',
+        box='4 2 6 4',
         title='Effect of factors for Diabetes',
         data=data('variable importance',8 , rows = [
             ('Pregnancies', 0.030), 
@@ -61,7 +61,7 @@ def diabetes_pred(q: Q,predictor):
     # Get prediction using the predictor object
     prediction = predictor.predict(input_values[1:])
     prediction =prediction[0]
-    q.page['example2'] = ui.form_card(box='1 3 2 2', items=[
+    q.page['example2'] = ui.form_card(box='2 3 2 2', items=[
         ui.text_l(content=f'Prediction: {prediction}')  # Display prediction
     ])
 
@@ -69,7 +69,7 @@ def diabetes_pred(q: Q,predictor):
     back_home(q)
     diabetes_plt(q)
     del q.page['details'] 
-    q.page['details_pred'] = ui.form_card(box='1 6 8 2', items=[
+    q.page['details_pred'] = ui.form_card(box='2 6 8 2', items=[
         ui.text(content='If prediction is no. You have higher chance of not having Diabetes. Keep up your Good habits'),
         ui.text(content='If prediction is yes. Dont panic. We advice you to  meet the family doctor.'),
         ui.text(content='Look at the plot and identify which area you have to improve for better health. Refer WHO standards'),
@@ -93,7 +93,7 @@ def diabetes_form(q: Q):
     front_pge(q)
     del q.page['diabetes_plot']
     del q.page['footer']
-    q.page['example'] = ui.form_card(box='1 3 4 7', items=[
+    q.page['example'] = ui.form_card(box='1 3 5 7', items=[
             ui.dropdown(name='dropdown', label='Choose Gender', value='B', required=True, choices=choices_gender),
             ui.textbox(name='textbox1', label='Input Number of times Pregnencies', value=q.args.input1),
             ui.textbox(name='textbox2', label='Input Glocose Level', value=q.args.input2),
@@ -105,7 +105,7 @@ def diabetes_form(q: Q):
             ui.textbox(name='textbox8', label='Input Age', value=q.args.input8),
             ui.button(name='show_input_diabetes', label='Submit', primary=True),
         ])
-    q.page['details'] = ui.form_card(box='5 3 4 5', items=[
+    q.page['details'] = ui.form_card(box='6 3 5 7', items=[
         ui.text_l(content='About the Form'),
         ui.text(content='Please fill the form considering below informations. If any field is unknown please kept blank. We will assume that you are healthy in that unknown factor and values will be assigned automatically according to the world health standards. Try to insert more fields for better prediction'),
         ui.text(content= 'Pregnancies: Number of times pregnant'),

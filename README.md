@@ -49,7 +49,6 @@ To deactivate the virtual environment use ```deactivate``` command.
 ### 6. View the app:
 Point your favorite web browser to http://localhost:10101/health_guardian
 
-
 ## Others
 
 * [h2o wave documentation](https://wave.h2o.ai/docs/getting-started)
